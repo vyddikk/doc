@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}{{ category.title }} | {% endblock %}
+{% block title %}Search | {% endblock %}
 
 {% block content %}
  <section class="hero">
@@ -9,7 +9,11 @@
           <section class="section">
               <div class="columns">
                 <div class="column column is-8 is-offset-2">
-                  {% for post in posts %}
+                    <div class="content is-medium">
+                        <h1>Search result</h1>
+                        <h3>Query: {{ query }}</h3>
+                    </div>
+                    {% for post in posts %}
                     <div class="content is-medium">
                       <a href="{% url 'post_detail'  post.category.slug post.slug %}">
                         <h2 class="subtitle is-5 has-text-grey">{{ post.created_at|date:'M d, Y' }}</h2>
@@ -20,7 +24,7 @@
                       {% empty %}
                       <div class="content">
                       <p>
-                          There is no posts in this category...///
+                          No result for this given query...///
                       </p>
                       </div>
                   {% endfor %}
